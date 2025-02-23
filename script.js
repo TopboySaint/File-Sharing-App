@@ -8,7 +8,8 @@ let filesToSend = [];
 //Drag and drop feature
 dropZone.addEventListener("dragover", (e) => {
   e.preventDefault();
-  dropZone.style.background = "rgba(255, 255, 255, 0.5)";
+  dropZone.style.background = "rgba(82, 240, 95, 0.5)";
+  dropZone.style.borderRadius = "5px"
 });
 
 dropZone.addEventListener("dragleave", () => {
@@ -29,18 +30,19 @@ fileInput.addEventListener("change", (e) => {
 //Handle files
 function handleFiles(files) {
   for (let file of files) {
-    filesToSend.push(files);
+    filesToSend.push(file);
     const fileItem = document.createElement("p");
     fileItem.textContent = `📁 ${file.name} (${(file.size / 1024).toFixed(
       2
     )} KB)`;
+    fileItem.className = "text-center text-success pt-2"
     fileList.appendChild(fileItem);
   }
 }
 
 //Send files using webRTC
 sendButton.addEventListener("click", () => {
-  if (filesToSend === 0) {
+  if (filesToSend.length === 0) {
     alert("No file selected");
     return;
   }
@@ -54,6 +56,8 @@ sendButton.addEventListener("click", () => {
       link.href = event.target.result;
       link.download = file.name;
       link.textContent = `Download: ${file.name}`;
+      document.getElementById("share-links").appendChild(link);
+      link.className = "text-decoration-none text-center d-block"
       document.getElementById("share-links").appendChild(link);
     };
   });

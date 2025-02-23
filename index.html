@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Sharing</title>
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+    <div class="container mx-auto shadow col-11 col-lg-6 col-md-10 mt-3 p-3">
+        <h3 class="text-center text-primary">🌀File Sharing App</h3>
+        <div id="drop-zone" class="drop-zone">
+            <p class="text-center">Drag and drop files here</p>
+            <input type="file" id="fileInput" class="form-control" hidden multiple/>
+            <button class="form-control btn btn-success bg-success mt-3" onclick="document.getElementById('fileInput').click()">Choose files 📥</button>
+        </div>
+        <div id="file-list" class="shadow p-2 mt-3"></div>
+        <div id="share-links"></div>
+        <button id="send-btn" class="btn btn-success form-control bg-success mt-5">📤 Send Files</button>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
